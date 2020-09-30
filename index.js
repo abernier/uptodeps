@@ -3,7 +3,7 @@ const fs = require('fs')
 
 const dependencyTree = require('dependency-tree');
 
-function uptodeps(filename) {
+function uptodeps(filename, opts = {}) {
   // console.log('uptodeps', filename)
 
   const directory = path.resolve(filename, '..')
@@ -11,7 +11,7 @@ function uptodeps(filename) {
   var tree = dependencyTree({
     filename,
     directory,
-    // filter: path => !path.includes('node_modules')
+    filter: opts.filter
   });
   // console.log('tree', JSON.stringify(tree, null, 4))
 
@@ -44,12 +44,12 @@ function uptodeps(filename) {
     const depMtime = new Date(fs.statSync(dep).mtime)
     
     if (depMtime >= targetMtime) {
-      console.log('✋🏻 dependency %s is newer: %s >= %s', dep, depMtime, targetMtime)
+      console.log('🛑 dependency %s is newer: %s >= %s', dep, depMtime, targetMtime)
       return false
     }
   }
 
-  console.log('%s is newer than all its dependencies', target)
+  console.log('✅ %s is newer than all its dependencies', target)
   return true
 }
 

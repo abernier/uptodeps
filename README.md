@@ -14,3 +14,13 @@ if (!uptodeps('src/foo.js')) {
   console.log('File is newer than all its dependencies.')
 }
 ```
+
+You can also exclude some dependencies with `filter` option :
+
+```js
+uptodeps('src/foo.js', {
+  filter: path => !path.includes('node_modules') // exclude node_modules dependencies
+})
+```
+
+NB: see [`dependency-tree` `filter` option](https://www.npmjs.com/package/dependency-tree#options) for more details
