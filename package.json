@@ -1,0 +1,23 @@
+{
+  "name": "uptodeps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abernier/uptodeps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abernier/uptodeps/issues"
+  },
+  "homepage": "https://github.com/abernier/uptodeps#readme",
+  "dependencies": {
+    "dependency-tree": "^7.2.1"
+  }
+}
