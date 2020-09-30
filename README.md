@@ -1,4 +1,4 @@
-`uptodeps(file)` list all file's dependencies and returns false if one is newer than the file itself.
+`uptodeps(file)` returns `true` if the file is newer that all its dependencies (`false` if at least one dependency is newer).
 
 # Usage
 
@@ -6,8 +6,8 @@
 const uptodeps = require('uptodeps')
 
 if (!uptodeps('src/foo.js')) {
-  console.log('At least one dep is newer!')
+  console.log('At least one dependency is newer.')
 } else {
-  console.log('up to date!')
+  console.log('File is newer than all its dependencies.')
 }
 ```
