@@ -8,8 +8,8 @@
 ```js
 const uptodeps = require('uptodeps')
 
-const target = path.resolve(__dirname, './src/foo.js') // the file we target
-const entrypoint = path.resolve(__dirname, './dist/foo.js') // the file from which we determine dependencies
+const target = path.resolve(__dirname, './dist/foo.js') // the file we target
+const entrypoint = path.resolve(__dirname, './src/foo.js') // the file from which we determine dependencies
 
 if (!uptodeps(target, entrypoint)) {
   console.log('At least one dependency is newer.')
