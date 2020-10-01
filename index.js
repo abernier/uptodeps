@@ -6,6 +6,8 @@ const dependencyTree = require('dependency-tree');
 function uptodeps(target, entrypoint, opts = {}) {
   // console.log('uptodeps', entrypoint)
 
+  if (!fs.existsSync(entrypoint)) throw new Error(`No such ${entrypoint} file.`)
+
   const directory = path.resolve(entrypoint, '..')
 
   var tree = dependencyTree({
@@ -15,7 +17,14 @@ function uptodeps(target, entrypoint, opts = {}) {
   });
   // console.log('tree', JSON.stringify(tree, null, 4))
 
-  const targetMtime = new Date(fs.statSync(target).mtime)
+  let targetMtime;
+  if (fs.existsSync(target)) {
+    targetMtime = new Date(fs.statSync(target).mtime)
+  } else {
+    // if `target` does not exist: any dep should be newer => `(depMtime >= targetMtime)` should be always true => `targetMtime` should be minimal
+    targetMtime = -Infinity
+  }
+  
 
   //
   // Unique deps
