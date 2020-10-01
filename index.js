@@ -3,19 +3,18 @@ const fs = require('fs')
 
 const dependencyTree = require('dependency-tree');
 
-function uptodeps(filename, opts = {}) {
-  // console.log('uptodeps', filename)
+function uptodeps(target, entrypoint, opts = {}) {
+  // console.log('uptodeps', entrypoint)
 
-  const directory = path.resolve(filename, '..')
+  const directory = path.resolve(entrypoint, '..')
 
   var tree = dependencyTree({
-    filename,
+    filename: entrypoint,
     directory,
     filter: opts.filter
   });
   // console.log('tree', JSON.stringify(tree, null, 4))
 
-  const target = Object.keys(tree)[0]
   const targetMtime = new Date(fs.statSync(target).mtime)
 
   //
@@ -32,7 +31,7 @@ function uptodeps(filename, opts = {}) {
       traverse(v)
     }
   }
-  traverse(tree[target]);
+  traverse(tree);
 
   console.log('deps=', deps)
 
