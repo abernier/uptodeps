@@ -1,7 +1,7 @@
 [![ci/cd](https://github.com/abernier/uptodeps/workflows/ci/cd/badge.svg)](https://github.com/abernier/uptodeps/actions?query=workflow%3Aci%2Fcd)
 [![NPM version](https://img.shields.io/npm/v/uptodeps.svg?style=flat)](https://www.npmjs.com/package/uptodeps)
 
-`uptodeps(target, entrypoint)` returns `true` if the `target` file is newer that all `entrypoint`'s dependencies (`false` if at least one dependency is newer).
+`uptodeps(target, entrypoint)` returns `true` if the `target` file mtime is newer that all `entrypoint`'s dependencies mtimes (`false` if at least one dependency is newer).
 
 # Usage
 
