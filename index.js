@@ -42,7 +42,7 @@ function uptodeps(target, entrypoint, opts = {}) {
   }
   traverse(tree);
 
-  console.log('deps=', deps)
+  // console.log('deps=', deps)
 
   //
   // comparing target's mtime with deps' mtimes
