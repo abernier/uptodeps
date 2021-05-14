@@ -52,12 +52,12 @@ function uptodeps(target, entrypoint, opts = {}) {
     const depMtime = new Date(fs.statSync(dep).mtime)
     
     if (depMtime >= targetMtime) {
-      console.log('🛑 dependency %s is newer: %s >= %s', dep, depMtime, targetMtime)
+      console.log('UPTODEPS[✋🏻]: dependency %s is newer than target %s: %s >= %s', dep, target, depMtime, targetMtime)
       return false
     }
   }
 
-  console.log('✅ %s is newer than all its dependencies', target)
+  console.log('UPTODEPS[✨]: target %s is newer than all its dependencies', target)
   return true
 }
 
